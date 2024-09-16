@@ -12,3 +12,4 @@ C:\Users\Emma\Desktop\Studier\Programmering i C#.NET\Moment3\obj\Debug\net8.0\re
 C:\Users\Emma\Desktop\Studier\Programmering i C#.NET\Moment3\obj\Debug\net8.0\Moment3.pdb
 C:\Users\Emma\Desktop\Studier\Programmering i C#.NET\Moment3\obj\Debug\net8.0\Moment3.genruntimeconfig.cache
 C:\Users\Emma\Desktop\Studier\Programmering i C#.NET\Moment3\obj\Debug\net8.0\ref\Moment3.dll
+C:\Users\Emma\Desktop\Studier\Programmering i C#.NET\Moment3\obj\Debug\net8.0\Moment3.sourcelink.json
