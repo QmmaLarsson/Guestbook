@@ -6,6 +6,8 @@ namespace GuestbookConsoleApp
     {
         public static void Main()
         {
+            TestPost();
+
             while (true)
             {
                 //Konsollen rensas innan den skrivs om
@@ -45,6 +47,15 @@ namespace GuestbookConsoleApp
                 Console.WriteLine("Tryck på en tanget för att fortsätta.");
                 Console.ReadKey();
             }
+        }
+
+        static void TestPost()
+        {
+            var p = new Post("Emma", "Hej");
+            Console.WriteLine(p.ToString());
+
+            Console.WriteLine("Tryck på en tanget för att fortsätta.");
+            Console.ReadKey();
         }
     }
 }
