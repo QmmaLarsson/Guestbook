@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json;
 
 namespace GuestbookConsoleApp
 {
@@ -22,6 +23,9 @@ namespace GuestbookConsoleApp
 
             //Skapa nytt inlägg med hjälp av Post-klassen
             Post newPost = new(author, message);
+
+            //Spara som som JSON-string
+            string jsonString = JsonSerializer.Serialize(newPost);
 
             //Rensa konsollen innan nya meddelandet skapas
             Console.Clear();
