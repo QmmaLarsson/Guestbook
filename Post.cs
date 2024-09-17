@@ -3,12 +3,15 @@ using System.Text.Json;
 
 namespace GuestbookConsoleApp
 {
-    public static class PostProgram
+    public class PostProgram
     {
+        //Lista där alla gästboksinlägg sparas
+        private List<Post> posts = [];
+        //JSON-filen där alla gästboksinlägg sparas
         private const string fileName = "AllPosts.json";
 
         //Metod för att skapa ett nytt inlägg i gästboken
-        public static void CreatePost()
+        public void CreatePost()
         {
             Console.Write("Ange ditt namn: ");
             string author = Console.ReadLine().Trim();
@@ -23,17 +26,16 @@ namespace GuestbookConsoleApp
                 return;
             }
 
-            //Skapa nytt inlägg med hjälp av Post-klassen
-            Post newPost = new(author, message);
+            //Skapa nytt inlägg med hjälp av Post-klassen och lägg till detta i posts-listan
+            posts.Add(new Post(author, message));
 
             //Spara som som JSON-string
-            string jsonString = JsonSerializer.Serialize(newPost);
+            string jsonString = JsonSerializer.Serialize(posts);
             File.WriteAllText(fileName, jsonString);
 
-            //Rensa konsollen innan nya meddelandet skapas
+            //Rensa konsollen och meddela att nytt inlägg skapats
             Console.Clear();
-            Console.WriteLine("Nytt inlägg skapat: ");
-            Console.WriteLine(newPost);
+            Console.WriteLine("Nytt inlägg skapat!");
         }
 
         //Klass som representerar ett inlägg i gästboken med en författare och ett meddelande

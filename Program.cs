@@ -6,7 +6,8 @@ namespace GuestbookConsoleApp
     {
         //Metod som körs när programmet startar
         public static void Main()
-        {
+        {   
+            PostProgram postprogram = new();
             while (true)
             {
                 //Konsollen rensas innan den skrivs om
@@ -28,7 +29,7 @@ namespace GuestbookConsoleApp
                 {
                     case "1":
                         //Skapa ett inlägg
-                        PostProgram.CreatePost();
+                        postprogram.CreatePost();
                         break;
 
                     case "2":
