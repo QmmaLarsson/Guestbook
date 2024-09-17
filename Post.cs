@@ -5,6 +5,8 @@ namespace GuestbookConsoleApp
 {
     public static class PostProgram
     {
+        private const string fileName = "AllPosts.json";
+
         //Metod för att skapa ett nytt inlägg i gästboken
         public static void CreatePost()
         {
@@ -26,6 +28,7 @@ namespace GuestbookConsoleApp
 
             //Spara som som JSON-string
             string jsonString = JsonSerializer.Serialize(newPost);
+            File.WriteAllText(fileName, jsonString);
 
             //Rensa konsollen innan nya meddelandet skapas
             Console.Clear();
