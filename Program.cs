@@ -4,6 +4,7 @@ namespace GuestbookConsoleApp
 {
     public class Program
     {
+        //Metod som körs när programmet startar
         public static void Main()
         {
             while (true)
@@ -27,7 +28,7 @@ namespace GuestbookConsoleApp
                 {
                     case "1":
                         //Skapa ett inlägg
-                        CreatePost();
+                        PostProgram.CreatePost();
                         break;
 
                     case "2":
@@ -46,30 +47,6 @@ namespace GuestbookConsoleApp
                 Console.WriteLine("Tryck på en tanget för att fortsätta.");
                 Console.ReadKey();
             }
-        }
-        //Metod för att skapa ett nytt inlägg
-        private static void CreatePost()
-        {
-            Console.Write("Ange ditt namn: ");
-            string author = Console.ReadLine().Trim();
-
-            Console.Write("Skriv ditt meddelande: ");
-            string message = Console.ReadLine().Trim();
-
-            //If-sats som kontrollerar om namn och meddalande är korrekt ifyllt
-            if (string.IsNullOrWhiteSpace(author) || string.IsNullOrWhiteSpace(message))
-            {
-                Console.WriteLine("Error: Namn och/eller meddelande får inte vara tomt");
-                return;
-            }
-
-            //Skapa nytt inlägg med hjälp av Post-klassen
-            Post newPost = new(author, message);
-
-            //Rensa konsollen innan nya meddelandet skapas
-            Console.Clear();
-            Console.WriteLine("Nytt inlägg skapat: ");
-            Console.WriteLine(newPost);
         }
     }
 }
