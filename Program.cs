@@ -40,7 +40,7 @@ namespace GuestbookConsoleApp
                         break;
 
                     case "2":
-                        Console.WriteLine("Du har valt alternativ 2!");
+                        postprogram.DeletePost();
                         break;
 
                     case "X":

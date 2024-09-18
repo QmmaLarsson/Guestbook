@@ -60,13 +60,34 @@ namespace GuestbookConsoleApp
                 //Om inlägg finns skrivs dessa ut till konsollen
                 for (int i = 0; i < posts.Count; i++)
                 {
-                        Console.WriteLine($"{i}. {posts[i]}");
+                    Console.WriteLine($"{i}. {posts[i]}");
                 }
             }
             else
             {
                 //Om det inte finns några inlägg visas meddelandet "Gästboken är tom
                 Console.WriteLine("Gästboken är tom.");
+            }
+        }
+
+        //Metod som tar bort ett inlägg från gästboken
+        public void DeletePost()
+        {
+            PrintPost();
+            Console.WriteLine("");
+            Console.Write("Ange ID:et för det inlägg du vill ta bort: ");
+            string input = Console.ReadLine().Trim();
+
+            //If-sats som försöker göra om användarens input till en integer
+            if (int.TryParse(input, out int postId))
+            {
+                //Inlägget med det valda ID:et tas bort
+                posts.RemoveAt(postId);
+                Console.WriteLine("Inlägget med det valda ID:et har tagits bort.");
+            }
+            else
+            {
+                Console.WriteLine("Ogiltigt ID, vänligen ange ett heltal.");
             }
         }
 
