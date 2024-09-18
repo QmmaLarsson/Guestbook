@@ -22,6 +22,7 @@ namespace GuestbookConsoleApp
                 Console.WriteLine("2. Ta bort inlägg");
                 Console.WriteLine("X. Avsluta");
                 Console.WriteLine("");
+                postprogram.PrintPost();
 
                 //Läser in användarens val
                 //Trim() tar bort eventuella mellanslag runt användarens inmatning

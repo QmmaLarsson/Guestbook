@@ -51,6 +51,25 @@ namespace GuestbookConsoleApp
             posts = JsonSerializer.Deserialize<List<Post>>(jsonString) ?? [];
         }
 
+        //Metod som läser in inlägg
+        public void PrintPost()
+        {
+            //If-sats som kontrollerar om det finns några inlägg i gästboken
+            if (posts.Count > 0)
+            {
+                //Om inlägg finns skrivs dessa ut till konsollen
+                for (int i = 0; i < posts.Count; i++)
+                {
+                        Console.WriteLine($"{i}. {posts[i]}");
+                }
+            }
+            else
+            {
+                //Om det inte finns några inlägg visas meddelandet "Gästboken är tom
+                Console.WriteLine("Gästboken är tom.");
+            }
+        }
+
         //Klass som representerar ett inlägg i gästboken med en författare och ett meddelande
         public class Post(string author, string message)
         {
