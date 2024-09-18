@@ -6,16 +6,22 @@ namespace GuestbookConsoleApp
     {
         //Metod som körs när programmet startar
         public static void Main()
-        {   
+        {
+            //Instans av PostProgram-klassen
             PostProgram postprogram = new();
+            //Laddar in alla meddelanden
+            postprogram.LoadPost();
+
             while (true)
             {
                 //Konsollen rensas innan den skrivs om
                 Console.Clear();
                 Console.WriteLine("EMMAS GÄSTBOK");
+                Console.WriteLine("");
                 Console.WriteLine("1. Skriv i gästboken");
                 Console.WriteLine("2. Ta bort inlägg");
                 Console.WriteLine("X. Avsluta");
+                Console.WriteLine("");
 
                 //Läser in användarens val
                 //Trim() tar bort eventuella mellanslag runt användarens inmatning

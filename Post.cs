@@ -29,13 +29,26 @@ namespace GuestbookConsoleApp
             //Skapa nytt inlägg med hjälp av Post-klassen och lägg till detta i posts-listan
             posts.Add(new Post(author, message));
 
-            //Spara som som JSON-string
-            string jsonString = JsonSerializer.Serialize(posts);
-            File.WriteAllText(fileName, jsonString);
+            SavePost();
 
             //Rensa konsollen och meddela att nytt inlägg skapats
             Console.Clear();
             Console.WriteLine("Nytt inlägg skapat!");
+        }
+
+        //Metod som sparar inlägg i JSON-format i en separat fil
+        public void SavePost()
+        {
+            //Spara som som JSON-string
+            string jsonString = JsonSerializer.Serialize(posts);
+            File.WriteAllText(fileName, jsonString);
+        }
+
+        //Metod som hämtar information från JSON-filen och konverterar den till strings i en lista
+        public void LoadPost()
+        {
+            string jsonString = File.ReadAllText(fileName);
+            posts = JsonSerializer.Deserialize<List<Post>>(jsonString) ?? [];
         }
 
         //Klass som representerar ett inlägg i gästboken med en författare och ett meddelande
