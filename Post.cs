@@ -47,8 +47,12 @@ namespace GuestbookConsoleApp
         //Metod som hämtar information från JSON-filen och konverterar den till strings i en lista
         public void LoadPost()
         {
-            string jsonString = File.ReadAllText(fileName);
-            posts = JsonSerializer.Deserialize<List<Post>>(jsonString) ?? [];
+            //If-sats son kontrollerar om JSON-filen existerar
+            if (File.Exists(fileName) == true)
+            {
+                string jsonString = File.ReadAllText(fileName);
+                posts = JsonSerializer.Deserialize<List<Post>>(jsonString) ?? [];
+            }
         }
 
         //Metod som läser in inlägg
@@ -81,27 +85,34 @@ namespace GuestbookConsoleApp
             //If-sats som försöker göra om användarens input till en integer
             if (int.TryParse(input, out int postId))
             {
-                //Inlägget med det valda ID:et tas bort
-                posts.RemoveAt(postId);
-                Console.WriteLine("Inlägget med det valda ID:et har tagits bort.");
+                if (postId < 0 || postId >= posts.Count)
+                {
+                    Console.WriteLine("Error: Ogiltigt ID, vänligen ange ett befintligt ID");
+                }
+                else
+                {
+                    //Inlägget med det valda ID:et tas bort
+                    posts.RemoveAt(postId);
+                    Console.WriteLine("Inlägget med det valda ID:et har tagits bort.");
+                }
             }
             else
             {
-                Console.WriteLine("Ogiltigt ID, vänligen ange ett heltal.");
+                Console.WriteLine("Error: Ogiltigt ID, vänligen ange ett heltal");
             }
         }
+    }
 
-        //Klass som representerar ett inlägg i gästboken med en författare och ett meddelande
-        public class Post(string author, string message)
+    //Klass som representerar ett inlägg i gästboken med en författare och ett meddelande
+    public class Post(string author, string message)
+    {
+        public string Author { get; } = author;
+        public string Message { get; } = message;
+
+        //Returnerar en sträng med formatet "Författare - Meddelande"
+        public override string ToString()
         {
-            public string Author { get; } = author;
-            public string Message { get; } = message;
-
-            //Returnerar en sträng med formatet "Författare - Meddelande"
-            public override string ToString()
-            {
-                return $"{Author} - {Message}";
-            }
+            return $"{Author} - {Message}";
         }
     }
 }
