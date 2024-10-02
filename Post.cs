@@ -93,6 +93,7 @@ namespace GuestbookConsoleApp
                 {
                     //Inlägget med det valda ID:et tas bort
                     posts.RemoveAt(postId);
+                    SavePost();
                     Console.WriteLine("Inlägget med det valda ID:et har tagits bort.");
                 }
             }
