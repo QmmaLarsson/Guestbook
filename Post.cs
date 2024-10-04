@@ -13,16 +13,16 @@ namespace GuestbookConsoleApp
         //Metod för att skapa ett nytt inlägg i gästboken
         public void CreatePost()
         {
-            Console.Write("Ange ditt namn: ");
+            Console.Write("Enter your name: ");
             string author = Console.ReadLine().Trim();
 
-            Console.Write("Skriv ditt meddelande: ");
+            Console.Write("Enter your message: ");
             string message = Console.ReadLine().Trim();
 
             //If-sats som kontrollerar om namn och meddalande är korrekt ifyllt
             if (string.IsNullOrWhiteSpace(author) || string.IsNullOrWhiteSpace(message))
             {
-                Console.WriteLine("Error: Namn och/eller meddelande får inte vara tomt");
+                Console.WriteLine("Error: Name and/or message can't be empty");
                 return;
             }
 
@@ -33,7 +33,7 @@ namespace GuestbookConsoleApp
 
             //Rensa konsollen och meddela att nytt inlägg skapats
             Console.Clear();
-            Console.WriteLine("Nytt inlägg skapat!");
+            Console.WriteLine("New post created!");
         }
 
         //Metod som sparar inlägg i JSON-format i en separat fil
@@ -70,7 +70,7 @@ namespace GuestbookConsoleApp
             else
             {
                 //Om det inte finns några inlägg visas meddelandet "Gästboken är tom
-                Console.WriteLine("Gästboken är tom.");
+                Console.WriteLine("The guestbook is empty");
             }
         }
 
@@ -79,7 +79,7 @@ namespace GuestbookConsoleApp
         {
             PrintPost();
             Console.WriteLine("");
-            Console.Write("Ange ID:et för det inlägg du vill ta bort: ");
+            Console.Write("Enter the ID of the post you want to remove: ");
             string input = Console.ReadLine().Trim();
 
             //If-sats som försöker göra om användarens input till en integer
@@ -87,19 +87,19 @@ namespace GuestbookConsoleApp
             {
                 if (postId < 0 || postId >= posts.Count)
                 {
-                    Console.WriteLine("Error: Ogiltigt ID, vänligen ange ett befintligt ID");
+                    Console.WriteLine("Error: Invalid ID, please enter an existing ID");
                 }
                 else
                 {
                     //Inlägget med det valda ID:et tas bort
                     posts.RemoveAt(postId);
                     SavePost();
-                    Console.WriteLine("Inlägget med det valda ID:et har tagits bort.");
+                    Console.WriteLine("The post with the chosen ID has been removed");
                 }
             }
             else
             {
-                Console.WriteLine("Error: Ogiltigt ID, vänligen ange ett heltal");
+                Console.WriteLine("Error: Invalid ID, please enter an integer");
             }
         }
     }

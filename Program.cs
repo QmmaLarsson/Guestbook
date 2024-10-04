@@ -16,11 +16,11 @@ namespace GuestbookConsoleApp
             {
                 //Konsollen rensas innan den skrivs om
                 Console.Clear();
-                Console.WriteLine("EMMAS GÄSTBOK");
+                Console.WriteLine("EMMAS GUESTBOOK");
                 Console.WriteLine("");
-                Console.WriteLine("1. Skriv i gästboken");
-                Console.WriteLine("2. Ta bort inlägg");
-                Console.WriteLine("X. Avsluta");
+                Console.WriteLine("1. Create a new post");
+                Console.WriteLine("2. Remove post");
+                Console.WriteLine("X. Close application");
                 Console.WriteLine("");
                 postprogram.PrintPost();
 
@@ -47,12 +47,12 @@ namespace GuestbookConsoleApp
                         return;
 
                     default:
-                        Console.WriteLine("Error: Ogiltigt val");
+                        Console.WriteLine("Error: Invalid choice");
                         break;
 
                 }
                 //Vänta med att rensa konsollen
-                Console.WriteLine("Tryck på en tanget för att fortsätta.");
+                Console.WriteLine("Press a key to continue");
                 Console.ReadKey();
             }
         }
